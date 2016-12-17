@@ -25,6 +25,7 @@ namespace DevStore.Domain
 
         public int CategoryId { get; set; }
 
+        //Virtual modificador de atributo que permite que o Category seja sobrescrito em modo de execução.
         public virtual Category Category { get; set; }
 
         public override string ToString()
