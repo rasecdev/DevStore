@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevStore.Infra.DataContexts
 {
-    public class DevStoreDataContext : DbContext
+    class DevStoreDataContextInicializer : DropCreateDatabaseIfModelChanges<DevStoreDataContext>
     {
-
-    }    
+    }
 }
