@@ -8,6 +8,11 @@ namespace DevStore.Domain
 {
     class Product
     {
+        public Product()
+        {
+            this.AcquireDate = DateTime.Now;
+        }
+
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -21,5 +26,10 @@ namespace DevStore.Domain
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public override string ToString()
+        {
+            return this.Title;
+        }
     }
 }
