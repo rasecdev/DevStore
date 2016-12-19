@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevStore.Domain
 {
-    class Product
+    public class Product
     {
         public Product()
         {
