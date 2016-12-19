@@ -27,6 +27,8 @@ namespace DevStore.Infra.DataContexts
 
             context.Products.Add(new Product { Id = 3, Title = "História da Arte.", Price = 150, AcquireDate = new DateTime(2016, 3, 15), IsActive = true, CategoryId = 3 });
 
+            context.SaveChanges();
+
             base.Seed(context);
         }
     }
