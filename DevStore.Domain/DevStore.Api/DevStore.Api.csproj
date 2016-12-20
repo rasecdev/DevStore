@@ -214,7 +214,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DevStore.Domain\DevStore.Domain.csproj">
+      <Project>{8d89cdc4-33cd-4e4e-bdee-dff2c22e8ffa}</Project>
+      <Name>DevStore.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DevStore.Infra\DevStore.Infra.csproj">
+      <Project>{b7b2e1c2-3c54-41da-8bb3-6176238eff0b}</Project>
+      <Name>DevStore.Infra</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
