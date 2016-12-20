@@ -18,8 +18,7 @@ namespace DevStore.Infra.Mappings
             //Informa qual será a chave primária.
             HasKey(x => x.Id);
 
-            //Informa as características para a propriedade Title, tem no máximo 60 caracteres e é obrigatória.
-            //Acima de 60 caracteres dará erro.
+            //Informa as características para a propriedade Title, tem no máximo 60 caracteres e é obrigatória.            
             Property(x => x.Title).HasMaxLength(60).IsRequired();
 
         }
