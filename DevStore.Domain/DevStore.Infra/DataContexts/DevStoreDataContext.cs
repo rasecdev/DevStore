@@ -1,4 +1,5 @@
 ﻿using DevStore.Domain;
+using DevStore.Infra.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,6 +21,18 @@ namespace DevStore.Infra.DataContexts
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+
+        //Método para inicializar na creação das tabelas as configurações dos mapeamentos.
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //Inicializa as configurações do mapeamento da categoria.
+            modelBuilder.Configurations.Add(new CategoryMap());
+
+            //Inicializa as configurações do mapeamento do produto.
+            modelBuilder.Configurations.Add(new ProductMap());
+
+            base.OnModelCreating(modelBuilder);
+        }
 
     }    
 }
