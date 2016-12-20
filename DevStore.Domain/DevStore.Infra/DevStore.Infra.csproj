@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="DataContexts\DevStoreDataContext.cs" />
     <Compile Include="DataContexts\DevStoreDataContextInicializer.cs" />
+    <Compile Include="Mappings\CategoryMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
