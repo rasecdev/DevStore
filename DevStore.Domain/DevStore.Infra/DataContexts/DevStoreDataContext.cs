@@ -18,9 +18,10 @@ namespace DevStore.Infra.DataContexts
             Database.SetInitializer<DevStoreDataContext>(new DevStoreDataContextInicializer());
         }
 
-        public DbSet<Product> Products { get; set; }
+        //Usando a Interface IDbSet para não ocorrer erro na criação do controller no Web Api.
+        public IDbSet<Product> Products { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
+        public IDbSet<Category> Categories { get; set; }
 
         //Método para inicializar na creação das tabelas as configurações dos mapeamentos.
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
