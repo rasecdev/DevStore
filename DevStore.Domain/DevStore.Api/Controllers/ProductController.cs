@@ -20,7 +20,8 @@ namespace DevStore.Api.Controllers
         // GET: api/Product
         public IQueryable<Product> GetProducts()
         {
-            return db.Products;
+            //Incluir o carregamento da category para cada Produto.
+            return db.Products.Include("Category");
         }
 
         // GET: api/Product/5

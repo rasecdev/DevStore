@@ -15,7 +15,12 @@ namespace DevStore.Infra.DataContexts
         public DevStoreDataContext() : base("DevStoreConnectionString")
         {
             //Instancia um ojeto do DevStoreDataContextInicializer para fazer a inicialização da base do projeto.
-            Database.SetInitializer<DevStoreDataContext>(new DevStoreDataContextInicializer());
+            //Desabilitar para gerar o banco.
+            //Database.SetInitializer<DevStoreDataContext>(new DevStoreDataContextInicializer());
+
+            //Modifica o carregamento em demanda e não recupera a Category altomaticamente. 
+            //Para incluir é feita uma configuração no controller.
+            Configuration.LazyLoadingEnabled = false;
         }
 
         //Usando a Interface IDbSet para não ocorrer erro na criação do controller no Web Api.
