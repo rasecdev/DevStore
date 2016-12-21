@@ -44,7 +44,33 @@ namespace DevStore.Api.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-        
+
+        [HttpPost]
+        [Route("products")] //Para configurar a rota do HttpResponseMessage
+        public HttpResponseMessage PostProduct(Product product)
+        {
+            if (product == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            try
+            {
+                db.Products.Add(product);
+                db.SaveChanges();
+
+                //Boa prática retornar o que foi postado.
+                var result = product;
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Falha ao incluir o Produto.");
+            }
+           
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
