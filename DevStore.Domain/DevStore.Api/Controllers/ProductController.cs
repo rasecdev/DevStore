@@ -16,7 +16,14 @@ namespace DevStore.Api.Controllers
     public class ProductController : ApiController
     {
         private DevStoreDataContext db = new DevStoreDataContext();
-        
+
+        public HttpResponseMessage GetProduts()
+        {
+            var result = db.Products.Include("Category").ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
