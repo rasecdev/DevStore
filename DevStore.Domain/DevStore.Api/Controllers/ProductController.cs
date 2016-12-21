@@ -13,10 +13,14 @@ using DevStore.Infra.DataContexts;
 
 namespace DevStore.Api.Controllers
 {
+    //Rota para todo o controller, informando a versão e o tipo de acesso.
+    [RoutePrefix("api/v1/public")]
     public class ProductController : ApiController
     {
         private DevStoreDataContext db = new DevStoreDataContext();
 
+        //Para não retornar apenas o Iqueryable(lista de produtos) e sim uma mensagem de retorno padronizado.
+        [Route("products")] //Para configurar a rota do HttpResponseMessage
         public HttpResponseMessage GetProduts()
         {
             var result = db.Products.Include("Category").ToList();
@@ -24,6 +28,23 @@ namespace DevStore.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [Route("categories")] //Para configurar a rota do HttpResponseMessage
+        public HttpResponseMessage GetCategories()
+        {
+            var result = db.Categories.ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        //Entre chaves está o parâmetro.
+        [Route("categories/{categoryId}/products")] //Para configurar a rota do HttpResponseMessage
+        public HttpResponseMessage GetProductsByCategories(int categoryId)
+        {
+            var result = db.Products.Include("Category").Where(x => x.CategoryId == categoryId).ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
