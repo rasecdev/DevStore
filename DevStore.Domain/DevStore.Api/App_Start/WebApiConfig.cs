@@ -29,6 +29,9 @@ namespace DevStore.Api
             settings.Formatting = Formatting.Indented;
             //Converter os nomes da propriedades em mínúsculas.
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            //Acesso da Api de uma url ou localhost.
+            config.EnableCors();
             
             // Web API routes
             config.MapHttpAttributeRoutes();

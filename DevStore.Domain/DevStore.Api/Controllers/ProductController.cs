@@ -10,9 +10,13 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DevStore.Domain;
 using DevStore.Infra.DataContexts;
+using System.Web.Http.Cors;
 
 namespace DevStore.Api.Controllers
 {
+    
+    [EnableCors(origins:"*", headers:"*", methods:"*")]
+
     //Rota para todo o controller, informando a versão e o tipo de acesso.
     [RoutePrefix("api/v1/public")]
     public class ProductController : ApiController
