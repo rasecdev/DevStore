@@ -71,6 +71,84 @@ namespace DevStore.Api.Controllers
            
         }
 
+        [HttpPatch]
+        [Route("products")] //Para configurar a rota do HttpResponseMessage
+        public HttpResponseMessage PatchProduct(Product product)
+        {
+            if (product == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            try
+            {
+                //Informa que o estado foi modificado.
+                db.Entry<Product>(product).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                //Boa prática retornar o que foi postado.
+                var result = product;
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Falha ao incluir o Produto.");
+            }
+
+        }
+
+        [HttpPut]
+        [Route("products")] //Para configurar a rota do HttpResponseMessage
+        public HttpResponseMessage PutProduct(Product product)
+        {
+            if (product == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            try
+            {
+                //Informa que o estado foi modificado.
+                db.Entry<Product>(product).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                //Boa prática retornar o que foi postado.
+                var result = product;
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Falha ao incluir o Produto.");
+            }
+
+        }
+
+        [HttpDelete]
+        [Route("products")] //Para configurar a rota do HttpResponseMessage
+        public HttpResponseMessage DeleteProduct(int productId)
+        {
+            if (productId <= 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            try
+            {
+                //Informa que o estado foi modificado.
+                db.Products.Remove(db.Products.Find(productId));
+                db.SaveChanges();
+
+                return Request.CreateResponse(HttpStatusCode.OK, "Produto excluído.");
+            }
+            catch (Exception)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Falha ao incluir o Produto.");
+            }
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
